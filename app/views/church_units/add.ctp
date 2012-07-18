@@ -1,9 +1,8 @@
 <?php
 	echo $this->Session->flash('auth');
-	echo $this->Form->create('User');
-	echo $this->Form->input('first_name');
-	echo $this->Form->input('last_name');
-	echo $this->Form->input('username');
-	echo $this->Form->input('password');
+	echo $this->Form->create('ChurchUnit');
+	echo $this->Form->input('parent_id', array( 'label' => 'Parent Church Unit' ));
+	echo $this->Form->input('name');
+	echo $this->Form->input('church_unit_type', array('options' => $church_unit_types));
 	echo $this->Form->end('Add');
 ?>

@@ -26,6 +26,7 @@
 					<td><font size="4"><u>Shepherding Information</u></font>
 					<br/><?php echo('Shepherds: '.$this->Session->read('Auth.User.full_name')); ?>
 					<br/>Date: <?php echo(date('m/d/Y')); ?>
+					<br/><?php echo($this->Session->read('Auth.User.church_unit_name')); ?>
 					</td>
 				</tr>
 			</table>
