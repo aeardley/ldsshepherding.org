@@ -4,7 +4,11 @@
 	var $name = 'SingleAdults';
 	
 	function index() {
-		//debug($this->Session->read('Auth.User'));		
+		//debug($this->Session->read('Auth.User'));	
+		//check to see if unit id is set in passed args
+		if(isset($this->passedArgs['id'])) {
+			$this->Session->write('Auth.User.selected_unit',$this->passedArgs['id']);
+		}
 		if(isset($this->passedArgs['sort'])) {
 			$order_by = $this->passedArgs['sort'];
 			if($this->passedArgs['sort'] == $this->Session->read('Auth.User.last_ysa_sort_col')) {
@@ -17,14 +21,12 @@
 			$this->Session->write('Auth.User.last_ysa_sort_col', 'full_name');
 		}
 		
-	
-		$this->loadModel('SingleAdult');
 		//debug($this->Session->read());
 		$ysas = $this->SingleAdult->find('all',
 			array(
 				'order' => $order_by,
 				'conditions' => array(
-					'SingleAdult.user_id' => $this->Session->read('Auth.User.id'),
+					'SingleAdult.church_unit_id' => $this->Session->read('Auth.User.selected_unit'),
 					'SingleAdult.status' => 'active',
 				),
 				'recursive' => -1
@@ -39,12 +41,12 @@
 		//debug($this->data);
 		//Has any form data been POSTed?
 		if(!empty($this->data)) {
-			$this->data['SingleAdult']['user_id'] = $this->Session->read('Auth.User.id');
+			$this->data['SingleAdult']['church_unit_id'] = $this->Session->read('Auth.User.selected_unit');
 			//If the form data can be validated and saved...
 			if($this->SingleAdult->save($this->data)) {
 				//Set a session flash message and redirect.
 				$this->Session->setFlash("Single Adult information Saved!");
-				$this->redirect('/pages/display');
+				$this->redirect('/single_adults/index');
 			}
 			else {
 				$this->Session->setFlash("Single Adult information not Saved!");
@@ -57,12 +59,11 @@
 		//Has any form data been POSTed?
 		if(!empty($this->data)) {
 			//debug($this->data); exit;
-			$this->data['SingleAdult']['user_id'] = $this->Session->read('Auth.User.id');
 			//If the form data can be validated and saved...
 			if($this->SingleAdult->save($this->data)) {
 				//Set a session flash message and redirect.
 				$this->Session->setFlash("Single Adult information Saved!");
-				$this->redirect('/pages/display');
+				$this->redirect('/single_adults/index');
 			}
 			else {
 				$this->Session->setFlash("Single Adult information not Saved!");
@@ -85,7 +86,7 @@
 			if($this->SingleAdult->save($deleted_user)) {
 				//Set a session flash message and redirect.
 				$this->Session->setFlash("Single Adult removed!");
-				$this->redirect('/pages/display');
+				$this->redirect('/single_adults/index');
 			}
 		}
 	}

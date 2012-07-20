@@ -1,4 +1,4 @@
-<input type="button" value="<-Back" onClick="window.location='/pages/display'" />
+<input type="button" value="<-Back" onClick="window.location='/single_adults/index'" />
 <input type="button" value="Log a Contact/Visit" onClick="window.location='/contact_logs/add/ysa_id:<?php echo($ysa_detail['SingleAdult']['id']); ?>'" />
 <table class="detail_table">	
 	<tr>

@@ -1,7 +1,7 @@
 <?php
 	//debug($top_five); exit;
 ?>
-<input type="button" value="<-Back" onClick="window.location='/pages/display'" />
+<input type="button" value="<-Back" onClick="window.location='/single_adults/index'" />
 <table class="detail_table">
 <tr>
 		<th>Name, Address, Phone Number</th>

@@ -1,4 +1,4 @@
-<input type="button" value="<-Back" onClick="window.location='/pages/display'" />
+<input type="button" value="<-Back" onClick="window.location='/single_adults/index'" />
 <?php echo $this->Form->create('SingleAdult', array('type' => 'post')); 
 echo $this->Form->input('full_name');
 echo $this->Form->input('preferred_name');

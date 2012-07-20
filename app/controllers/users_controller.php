@@ -23,9 +23,13 @@
 			);
 			//save list of accessable church units in session
 			$this->loadModel('ChurchUnit');
-			$children = $this->ChurchUnit->children($this->Session->read('Auth.User.church_unit_id'));
-			$children[] = $this->Session->read('Auth.User.church_unit_id');
-			$this->Session->write('Auth.church_units',$children);
+			$children = $this->ChurchUnit->children($this->Session->read('Auth.User.church_unit_id'),false,array('id'));
+			
+			$accessable_units[] = $this->Session->read('Auth.User.church_unit_id');
+			foreach($children as $child) {
+				$accessable_units[] = $child['ChurchUnit']['id'];
+			}
+			$this->Session->write('Auth.church_units',$accessable_units);
 			$my_church_unit = $this->ChurchUnit->find('first', 
 				array(
 					'conditions' => array(
@@ -34,7 +38,9 @@
 				)
 			);
 			//debug($my_church_unit); die;
-			$this->Session->write('Auth.User.church_unit_name',$my_church_unit['ChurchUnit']['name']);
+			$this->Session->write('Auth.User.church_unit_name',$my_church_unit['ChurchUnit']['name']);		
+			$this->Session->write('Auth.User.church_unit_type',$my_church_unit['ChurchUnit']['church_unit_type']);
+			$this->Session->write('Auth.User.selected_unit',$my_church_unit['ChurchUnit']['id']);			
 			$this->redirect($this->Auth->redirect());
 		}
 	}

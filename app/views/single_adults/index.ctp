@@ -17,6 +17,13 @@
 <form name="ysa_list" id="ysa_list" action="/single_adults/top_five" method="post">
 <table>
 	<tr>
+	<?php
+	//if they belong to a stake/district or above give them a back button
+	if($this->Session->read('Auth.User.church_unit_type') < 5) {
+		echo('
+		<td><input type="button" value="<-Back" onClick="javascript: window.location=\'/pages/display\';" /></td>
+		');
+	}?>
 		<td><input type="button" value="Print Top Five" onClick="validate_top_five();" /></td>
 		<td><input type="button" onclick='javascript: window.location="/single_adults/add"' value="Add Single Adult" /></td>
 	</tr>
@@ -25,12 +32,12 @@
 	<tr>
 		<th align="center">#</th>
 		<th align="center"></th>
-		<th align="left"><a href="/pages/display/sort:full_name">Full Name</a></th>
-		<th align="left"><a href="/pages/display/sort:birthday">Birthday</a></th>
-		<th align="left"><a href="/pages/display/sort:email">Email</a></th>
-		<th align="left"><a href="/pages/display/sort:home_phone">Home Phone</a></th>
-		<th align="left"><a href="/pages/display/sort:mobile_phone">Mobile Phone</a></th>
-		<th align="left"><a href="/pages/display/sort:last_contact_date">Last Contact</a></th>
+		<th align="left"><a href="/single_adults/index/sort:full_name">Full Name</a></th>
+		<th align="left"><a href="/single_adults/index/sort:birthday">Birthday</a></th>
+		<th align="left"><a href="/single_adults/index/sort:email">Email</a></th>
+		<th align="left"><a href="/single_adults/index/sort:home_phone">Home Phone</a></th>
+		<th align="left"><a href="/single_adults/index/sort:mobile_phone">Mobile Phone</a></th>
+		<th align="left"><a href="/single_adults/index/sort:last_contact_date">Last Contact</a></th>
 	</tr>
 	<?php
 	//debug($ysas);
