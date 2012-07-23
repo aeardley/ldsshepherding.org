@@ -4,4 +4,5 @@
 echo $this->Form->input('single_adult_id', array('type' => 'hidden', 'value' => $ysa_id));
 echo $this->Form->input('notes');
 echo $this->Form->input('contact_date');
+echo('<input type="hidden" name="data[ContactLog][user_id]" value="'.$this->Session->read('Auth.User.id').'" />');
 echo $this->Form->end('Save'); ?>

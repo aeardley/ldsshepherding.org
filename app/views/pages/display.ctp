@@ -52,6 +52,8 @@
 		border:1px solid #aaa;
 	}
 </style>
+<input type="button" value="Add/Edit Users" onClick="javascript:window.location='/users/index'" />
+<input type="button" value="Add Church Unit" onClick="javascript:window.location='/church_units/add'" />
 <h2>Select a ward below to view: </h2>
 <div id="leftSide">
 	<?php

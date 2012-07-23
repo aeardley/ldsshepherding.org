@@ -2,10 +2,10 @@
 class User extends AppModel {
 	var $name = 'User';
 	
-	var $hasMany = array(
-		'SingleAdult' => array(
-			'className' => 'SingleAdult',
-			'foreignKey' => 'user_id'
+	var $belongsTo = array(
+		'ChurchUnit' => array(
+			'className' => 'ChurchUnit',
+			'foreignKey' => 'church_unit_id'
 		)
 	); 
 }

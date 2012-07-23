@@ -5,6 +5,5 @@
 	echo $this->Form->input('full_name');
 	echo $this->Form->input('username');
 	echo $this->Form->input('church_unit_id', array('label' => 'Church Unit', 'options' => $church_units));
-	echo $this->Form->input('password');
-	echo $this->Form->end('Add');
+	echo $this->Form->end('Save');
 ?>

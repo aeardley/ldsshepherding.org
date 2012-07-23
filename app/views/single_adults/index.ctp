@@ -14,6 +14,7 @@
 		}
 	}
 </script>
+<h2>Young Single Adults</h2>
 <form name="ysa_list" id="ysa_list" action="/single_adults/top_five" method="post">
 <table>
 	<tr>
@@ -44,7 +45,7 @@
 	$i=1;
 	foreach($ysas as $ysa) {
 		echo('<tr>');
-		echo('<td>'.$i.':</td><td><input type="checkbox" name="id['.$ysa['SingleAdult']['id'].']" value="'.$ysa['SingleAdult']['id'].'" />&nbsp;
+		echo('<td>'.$i.'.</td><td><input type="checkbox" name="id['.$ysa['SingleAdult']['id'].']" value="'.$ysa['SingleAdult']['id'].'" />&nbsp;
 		<a href="/single_adults/edit/'.$ysa['SingleAdult']['id'].'"><img src="/img/edit_icon.png" alt="Edit Single Adult" /></a>&nbsp;
 		<a href="javascript: delete_ysa('.$ysa['SingleAdult']['id'].');"><img src="/img/delete_icon.png" alt="Delete Single Adult" /></a>
 		</td>');

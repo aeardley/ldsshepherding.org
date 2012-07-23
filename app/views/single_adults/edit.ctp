@@ -2,6 +2,7 @@
 <?php echo $this->Form->create('SingleAdult', array('type' => 'post')); 
 echo $this->Form->input('id', array('action' => 'edit'));
 echo $this->Form->input('full_name');
+echo $this->Form->input('church_unit_id', array('label' => 'Home Ward/Branch', 'options' => $church_units));
 echo $this->Form->input('preferred_name');
 echo $this->Form->input('email');
 echo $this->Form->input('address');

@@ -1,6 +1,7 @@
 <input type="button" value="<-Back" onClick="window.location='/single_adults/index'" />
 <?php echo $this->Form->create('SingleAdult', array('type' => 'post')); 
 echo $this->Form->input('full_name');
+echo $this->Form->input('church_unit_id', array('label' => 'Home Ward/Branch', 'options' => $church_units, 'default'=> $this->Session->read('Auth.User.selected_unit')));
 echo $this->Form->input('preferred_name');
 echo $this->Form->input('email');
 echo $this->Form->input('address');
@@ -18,8 +19,6 @@ echo $this->Form->input('birth_year');
 echo $this->Form->input('parent_names');
 echo $this->Form->input('home_phone');
 echo $this->Form->input('mobile_phone');
-echo $this->Form->input('home_ward');
-echo $this->Form->input('home_stake');
 echo $this->Form->input('current_records_ward');
 echo $this->Form->input('current_records_stake');
 echo $this->Form->input('high_school');

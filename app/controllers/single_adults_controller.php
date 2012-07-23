@@ -6,7 +6,7 @@
 	function index() {
 		//debug($this->Session->read('Auth.User'));	
 		//check to see if unit id is set in passed args
-		if(isset($this->passedArgs['id'])) {
+		if(isset($this->passedArgs['id']) && in_array($this->passedArgs['id'], $this->Session->read('Auth.church_units'))) {
 			$this->Session->write('Auth.User.selected_unit',$this->passedArgs['id']);
 		}
 		if(isset($this->passedArgs['sort'])) {
@@ -37,6 +37,18 @@
 	}
 	
 	function add() {
+		$this->loadModel('ChurchUnit');
+		$church_units = $this->ChurchUnit->find('list',
+			array(
+				'conditions' => array(
+					'ChurchUnit.id' => $this->Session->read('Auth.church_units'),
+					'ChurchUnit.church_unit_type' => array(5,6)
+				)
+				
+			)
+		);
+		$this->set('church_units', $church_units);
+		//debug($church_units);
 		//debug($this->Session->read()); exit;
 		//debug($this->data);
 		//Has any form data been POSTed?
@@ -55,6 +67,17 @@
 	}
 	
 	function edit() {
+		$this->loadModel('ChurchUnit');
+		$church_units = $this->ChurchUnit->find('list',
+			array(
+				'conditions' => array(
+					'ChurchUnit.id' => $this->Session->read('Auth.church_units'),
+					'ChurchUnit.church_unit_type' => array(5,6)
+				)
+				
+			)
+		);
+		$this->set('church_units', $church_units);
 		//debug($this->Session->read()); exit;
 		//Has any form data been POSTed?
 		if(!empty($this->data)) {
@@ -92,13 +115,14 @@
 	}
 	
 	function view() {
-		$this->set('ysa_detail', $this->SingleAdult->find('first',
+		 $ysa_detail = $this->SingleAdult->find('first',
 			array(
 				'conditions' => array(
 					'SingleAdult.id' => $this->passedArgs['id']
 				)
 			)
-		));
+		);
+		$this->set('ysa_detail',$ysa_detail);
 		$this->loadModel('ContactLog');
 		$contact_count = $this->ContactLog->find('count',
 			array(
@@ -110,6 +134,19 @@
 			
 		);
 		$this->set('contact_count', $contact_count);
+		
+		$this->loadModel('ChurchUnit');
+		$home_ward = $this->ChurchUnit->find('first',
+			array(
+				'conditions' => array(
+					'ChurchUnit.id' => $ysa_detail['SingleAdult']['church_unit_id']
+				),
+				'recursive' => -1
+			)
+		);
+		$this->set('home_ward',$home_ward);
+		$home_stake = $this->ChurchUnit->getparentnode($ysa_detail['SingleAdult']['church_unit_id']);
+		$this->set('home_stake',$home_stake);
 	}
 	
 	function top_five() {

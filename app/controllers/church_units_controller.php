@@ -35,7 +35,8 @@
 			$parents = $this->ChurchUnit->find('list',
 				array(
 					'conditions' => array( 
-						'ChurchUnit.id' => $this->Session->read('Auth.church_units')
+						'ChurchUnit.id' => $this->Session->read('Auth.church_units'),
+						'ChurchUnit.church_unit_type' => array(1,2,3,4)
 					)
 				)
 			);

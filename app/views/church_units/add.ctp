@@ -1,3 +1,4 @@
+<input type="button" value="<-Back" onClick="javascript:window.location='/'" />
 <?php
 	echo $this->Session->flash('auth');
 	echo $this->Form->create('ChurchUnit');

@@ -1,0 +1,56 @@
+DROP TABLE IF EXISTS `church_units`;
+CREATE TABLE IF NOT EXISTS `church_units` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `lft` int(11) NOT NULL,
+  `rght` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `church_unit_type` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+
+INSERT INTO `church_units` (`id`, `parent_id`, `lft`, `rght`, `name`, `church_unit_type`, `created`, `updated`) VALUES
+(1, NULL, 1, 12, 'The Church of Jesus Christ of Latter-day Saints', 1, '2012-04-15 00:00:00', '2012-04-18 03:54:38'),
+(2, 1, 2, 9, 'Utah South Area', 2, '2012-04-17 00:00:00', '2012-04-18 03:54:38'),
+(3, 2, 3, 8, 'Washington Fields Stake', 3, '2012-04-17 00:00:00', '2012-04-18 03:54:38'),
+(4, 1, 10, 11, 'Utah North Area', 2, '2012-04-17 00:00:00', '2012-04-18 03:54:38'),
+(5, 3, 4, 5, 'Washington Fields 12th Ward', 5, '2012-07-18 04:06:30', '2012-07-18 04:06:30'),
+(6, 3, 6, 7, 'Washington Fields 2nd Ward', 5, '2012-07-18 04:17:38', '2012-07-18 04:17:38');
+
+
+DROP TABLE IF EXISTS `church_unit_types`;
+CREATE TABLE IF NOT EXISTS `church_unit_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `lft` int(11) NOT NULL,
+  `rght` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+
+
+INSERT INTO `church_unit_types` (`id`, `name`, `parent_id`, `lft`, `rght`, `created`, `updated`) VALUES
+(1, 'church', 0, 0, 0, '2012-06-10 00:00:00', '2012-06-10 00:00:00'),
+(2, 'area', 0, 0, 0, '2012-06-10 00:00:00', '2012-06-10 00:00:00'),
+(3, 'stake', 0, 0, 0, '2012-06-10 00:00:00', '2012-06-10 00:00:00'),
+(4, 'district', 0, 0, 0, '2012-06-10 00:00:00', '2012-06-10 00:00:00'),
+(5, 'ward', 0, 0, 0, '2012-06-10 00:00:00', '2012-06-10 00:00:00'),
+(6, 'branch', 0, 0, 0, '2012-06-10 00:00:00', '2012-06-10 00:00:00');
+
+
+ALTER TABLE `users` ADD `church_unit_id` INT NOT NULL AFTER `password`;
+
+
+ALTER TABLE single_adults ADD `church_unit_id` INT NOT NULL AFTER `id`;
+
+
+ALTER TABLE contact_logs ADD `user_id` INT NOT NULL AFTER `single_adult_id`;
+
+ALTER TABLE `users` ADD `status` VARCHAR( 20 ) NOT NULL AFTER `church_unit_id`;
+update `users` set status = 'active';

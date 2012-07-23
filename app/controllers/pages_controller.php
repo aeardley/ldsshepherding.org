@@ -9,6 +9,7 @@
 		//check to see if they belong to a ward or branch
 		if($this->Session->read('Auth.User.church_unit_type') > 4) {
 			//if so redirect directly to ysa page
+			$this->redirect(array('controller' => 'single_adults', 'action' => 'index'));
 		}
 		else {
 			$this->loadModel('ChurchUnit');

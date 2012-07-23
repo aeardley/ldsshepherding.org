@@ -1,5 +1,6 @@
 <input type="button" value="<-Back" onClick="window.location='/single_adults/index'" />
 <input type="button" value="Log a Contact/Visit" onClick="window.location='/contact_logs/add/ysa_id:<?php echo($ysa_detail['SingleAdult']['id']); ?>'" />
+<?php //debug($ysa_detail); ?>
 <table class="detail_table">	
 	<tr>
 		<td width="50%"><b>Date:</b> <?php echo(date('m/d/Y')); ?></td>
@@ -10,7 +11,7 @@
 	</tr>	
 	<tr>
 		<td><b>Full Name:</b> <?php echo($ysa_detail['SingleAdult']['full_name']); ?></td>
-		<td><b>Home Ward/Stake:</b> <?php echo($ysa_detail['SingleAdult']['home_ward'].'/'.$ysa_detail['SingleAdult']['home_stake']); ?></td>
+		<td><b>Home Ward/Stake:</b> <?php echo($home_ward['ChurchUnit']['name'].'/'.$home_stake['ChurchUnit']['name']); ?></td>
 	</tr>
 	<tr>
 		<td><b>Preferred Name:</b> <?php echo($ysa_detail['SingleAdult']['preferred_name']); ?></td>

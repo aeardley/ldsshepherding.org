@@ -24,8 +24,8 @@
 			<a href="javascript: delete_contact('.$contact['ContactLog']['id'].','.$ysa_id.');"><img src="/img/delete_icon.png" alt="Delete Contact Info" /></a>
 			</td>');
 			echo('<td>'.date('m/d/Y',strtotime($contact['ContactLog']['contact_date'])).'</td>');
-			if(strlen($contact['ContactLog']['notes']) > 60) {
-				echo('<td>'.substr($contact['ContactLog']['notes'],0,60).'...</td>');
+			if(strlen($contact['ContactLog']['notes']) > 400) {
+				echo('<td>'.substr($contact['ContactLog']['notes'],0,400).'...</td>');
 			}
 			else {
 				echo('<td>'.$contact['ContactLog']['notes'].'</td>');
