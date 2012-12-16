@@ -1,7 +1,17 @@
 <input type="button" value="<-Back" onClick="window.location='/single_adults/index'" />
 <input type="button" value="Log a Contact/Visit" onClick="window.location='/contact_logs/add/ysa_id:<?php echo($ysa_detail['SingleAdult']['id']); ?>'" />
-<?php //debug($ysa_detail); ?>
+<?php //debug($ysa_detail); 
+	$image = '/img/ysa_pictures/default_ysa.png';
+	if(file_exists('c:/wamp/www/vhosts/ldsshepherding.org/app/webroot/img/ysa_pictures/'.$ysa_detail['SingleAdult']['id'].'.jpg')) {
+		$image = '/img/ysa_pictures/'.$ysa_detail['SingleAdult']['id'].'.jpg';
+	}
+?>
+
 <table class="detail_table">	
+	<tr>
+		<td><b>Photo:</b></td>
+		<td><img src="<?php echo($image); ?>" width="300px" /></td>
+	</tr>
 	<tr>
 		<td width="50%"><b>Date:</b> <?php echo(date('m/d/Y')); ?></td>
 		<td><b>Current Ward/Stake:</b> <?php echo($ysa_detail['SingleAdult']['current_records_ward'].'/'.$ysa_detail['SingleAdult']['current_records_stake']); ?></td>
