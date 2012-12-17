@@ -33,6 +33,7 @@
 	<tr>
 		<th align="center">#</th>
 		<th align="center"></th>
+		<th align="left"><a href="/single_adults/index/sort:full_name">Photo</a></th>
 		<th align="left"><a href="/single_adults/index/sort:full_name">Full Name</a></th>
 		<th align="left"><a href="/single_adults/index/sort:birthday">Birthday</a></th>
 		<th align="left"><a href="/single_adults/index/sort:email">Email</a></th>
@@ -49,6 +50,11 @@
 		<a href="/single_adults/edit/'.$ysa['SingleAdult']['id'].'"><img src="/img/edit_icon.png" alt="Edit Single Adult" /></a>&nbsp;
 		<a href="javascript: delete_ysa('.$ysa['SingleAdult']['id'].');"><img src="/img/delete_icon.png" alt="Delete Single Adult" /></a>
 		</td>');
+		$image = '/img/ysa_pictures/default_ysa.png';
+		if(file_exists('c:/wamp/www/vhosts/ldsshepherding.org/app/webroot/img/ysa_pictures/'.$ysa['SingleAdult']['id'].'.jpg')) {
+			$image = '/img/ysa_pictures/'.$ysa['SingleAdult']['id'].'.jpg';
+		}
+		echo('<td><a href="/single_adults/view/id:'.$ysa['SingleAdult']['id'].'"><img src="'.$image.'" height="50px;"/></a></td>');
 		echo('<td><a href="/single_adults/view/id:'.$ysa['SingleAdult']['id'].'">'.$ysa['SingleAdult']['full_name'].'</a></td>');
 		$birthday = null;
 		if(isset($ysa['SingleAdult']['birthday']) && $ysa['SingleAdult']['birthday'] != '0000-00-00'){ 
