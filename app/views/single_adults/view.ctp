@@ -51,7 +51,8 @@
 		<td><b>Church Calling:</b> <?php echo($ysa_detail['SingleAdult']['current_calling']); ?></td>
 	</tr>
 	<tr>
-		<td colspan="2"><b>Post High School Plans:</b> <?php echo($ysa_detail['SingleAdult']['post_high_school_plans']); ?></td>
+		<td><b>Current Employment:</b> <?php echo($ysa_detail['SingleAdult']['current_employment']); ?></td>
+		<td><b>Future Plans:</b> <?php echo($ysa_detail['SingleAdult']['future_plans']); ?></td>
 		
 	</tr>
 	<?php

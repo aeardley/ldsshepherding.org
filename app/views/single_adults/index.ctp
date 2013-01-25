@@ -25,7 +25,7 @@
 		<td><input type="button" value="<-Back" onClick="javascript: window.location=\'/pages/display\';" /></td>
 		');
 	}?>
-		<td><input type="button" value="Print Top Five" onClick="validate_top_five();" /></td>
+		<td><input type="button" value="Monthly Report" onClick="validate_top_five();" /></td>
 		<td><input type="button" onclick='javascript: window.location="/single_adults/add"' value="Add Single Adult" /></td>
 	</tr>
 </table>

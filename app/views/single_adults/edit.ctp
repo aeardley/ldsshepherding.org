@@ -27,6 +27,7 @@ echo $this->Form->input('current_records_stake');
 echo $this->Form->input('high_school');
 echo $this->Form->input('years_seminary');
 echo $this->Form->input('priesthood_office');
+echo $this->Form->input('activity_level', array('label' => 'Activity Level (VA, A, LA)'));
 echo $this->Form->input('current_calling');
 echo $this->Form->input('OC-ordinance_current');
 echo $this->Form->input('IE-institute_enrolled');
@@ -40,6 +41,7 @@ echo $this->Form->input('PM-preparing_mission');
 echo $this->Form->input('NA_not_active');
 echo $this->Form->input('PT-preparing_for_temple');
 echo $this->Form->input('has_ht_vt');
-echo $this->Form->input('post_high_school_plans');
+echo $this->Form->input('current_employment');
+echo $this->Form->input('future_plans');
 echo $this->Form->input('notes');
 echo $this->Form->end('Save'); ?>
